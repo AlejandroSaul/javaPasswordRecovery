@@ -48,6 +48,9 @@ public class RecoveryFrame extends JFrame {
 
     private final JCheckBox headerCheckBox =
             new JCheckBox("La primera fila contiene encabezados");
+    
+    private final JCheckBox excelCheckBox =
+            new JCheckBox("¿Usar Excel?");
 
     private final JProgressBar progressBar = new JProgressBar();
     private final JLabel statusLabel = new JLabel("Selecciona los archivos para comenzar.");
@@ -93,6 +96,13 @@ public class RecoveryFrame extends JFrame {
         check.anchor = GridBagConstraints.WEST;
         check.insets = new Insets(8, 5, 5, 5);
         filesPanel.add(headerCheckBox, check);
+        GridBagConstraints checkExc = new GridBagConstraints();
+        checkExc.gridx = 0;
+        checkExc.gridy = 4;
+        checkExc.gridwidth = 3;
+        checkExc.anchor = GridBagConstraints.WEST;
+        checkExc.insets = new Insets(8, 5, 5, 5);
+        filesPanel.add(excelCheckBox, checkExc);
 
         JPanel progressPanel = new JPanel(new BorderLayout(8, 8));
         progressPanel.setBorder(BorderFactory.createTitledBorder("Progreso"));
