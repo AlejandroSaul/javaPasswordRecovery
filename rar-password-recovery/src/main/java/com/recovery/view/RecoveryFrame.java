@@ -30,6 +30,7 @@ import com.recovery.controller.RecoveryController;
 import com.recovery.controller.RecoveryController.Listener;
 import com.recovery.model.RecoveryResult;
 import com.recovery.model.RecoveryResult.Status;
+import com.recovery.util.Constants;
 import com.recovery.util.SevenZipUtil;
 
 public class RecoveryFrame extends JFrame {
@@ -38,9 +39,9 @@ public class RecoveryFrame extends JFrame {
     private final JTextField excelField = new JTextField();
     private final JTextField sevenZipField = new JTextField();
 
-    private final JButton rarBrowseButton = new JButton("Examinar...");
-    private final JButton excelBrowseButton = new JButton("Examinar...");
-    private final JButton sevenZipBrowseButton = new JButton("Examinar...");
+    private final JButton rarBrowseButton = new JButton(Constants.EXAMINAR.getConstante());
+    private final JButton excelBrowseButton = new JButton(Constants.EXAMINAR.getConstante());
+    private final JButton sevenZipBrowseButton = new JButton(Constants.EXAMINAR.getConstante());
 
     private final JButton startButton = new JButton("Iniciar");
     private final JButton cancelButton = new JButton("Cancelar");
