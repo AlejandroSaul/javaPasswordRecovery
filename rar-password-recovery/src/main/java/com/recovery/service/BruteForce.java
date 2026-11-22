@@ -13,16 +13,16 @@ public class BruteForce implements Iterator<String>{
 		this.longitud = ultimoGenerado.length();
 		this.indices = new int[longitud];
 		for (int i = 0; i < longitud; i++) {
-			indices[i] = ultimoGenerado.charAt(i) - 33;
+			indices[i] = ultimoGenerado.charAt(i) - 35;
 		}
 		avanzar();
 	}
 
-	private static final char[] letras = new char[94];
+	private static final char[] letras = new char[92];
 
 	static {
-		for(char caracter  = 33;caracter<=126;caracter++) {
-			letras[caracter-33] = caracter;
+		for(char caracter  = 35;caracter<=126;caracter++) {
+			letras[caracter-35] = caracter;
 		}
 	}
 
