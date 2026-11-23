@@ -1,8 +1,7 @@
 package com.recovery.util;
 
 public enum Constants {
-	EXAMINAR ("Examinar..."),
-	DATO_ANALIZADO("");
+	EXAMINAR ("Examinar...");
 	
 	private Constants(String constante) {
 		this.constante = constante;

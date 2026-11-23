@@ -6,6 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
+import javax.swing.JTextField;
 import javax.swing.SwingWorker;
 
 import com.recovery.model.PasswordEntry;
@@ -46,7 +47,7 @@ public class RecoveryController {
 
 	public void startByBruteforce(final Path rarPath,
 			final Path sevenZipPath, 
-			final Listener listener) {
+			final Listener listener,final JTextField initialValueField) {
 
 		if (isRunning()) {
 			throw new IllegalStateException("Ya hay una recuperación en curso.");
@@ -61,7 +62,12 @@ public class RecoveryController {
 
 					publish("Se inicia ataque de fuerza bruta");
 
-					BruteForce generador = new BruteForce(Constants.DATO_ANALIZADO.getConstante());
+					
+					String valorInicial = initialValueField.getText().trim();
+
+					BruteForce generador = valorInicial.isEmpty()
+							? new BruteForce() : new BruteForce(valorInicial);
+					
 					int cantidadIntentos = Integer.MAX_VALUE;
 					listener.onStarted(cantidadIntentos);
 					for (int i = 0; i < cantidadIntentos; i++) {

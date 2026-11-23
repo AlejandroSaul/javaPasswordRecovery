@@ -38,6 +38,8 @@ public class RecoveryFrame extends JFrame {
 	private final JTextField rarField = new JTextField();
 	private final JTextField excelField = new JTextField();
 	private final JTextField sevenZipField = new JTextField();
+	private final JTextField initialValueField = new JTextField(15);
+
 
 	private final JButton rarBrowseButton = new JButton(Constants.EXAMINAR.getConstante());
 	private final JButton excelBrowseButton = new JButton(Constants.EXAMINAR.getConstante());
@@ -85,6 +87,7 @@ public class RecoveryFrame extends JFrame {
 
 		JPanel filesPanel = new JPanel(new GridBagLayout());
 		filesPanel.setBorder(BorderFactory.createTitledBorder("Archivos de entrada"));
+		
 
 		addFileRow(filesPanel, 0, "Archivo RAR:", rarField, rarBrowseButton);
 		addFileRow(filesPanel, 1, "Excel (.xlsx):", excelField, excelBrowseButton);
@@ -97,6 +100,7 @@ public class RecoveryFrame extends JFrame {
 		check.anchor = GridBagConstraints.WEST;
 		check.insets = new Insets(8, 5, 5, 5);
 		filesPanel.add(headerCheckBox, check);
+		
 		GridBagConstraints checkExc = new GridBagConstraints();
 		checkExc.gridx = 0;
 		checkExc.gridy = 4;
@@ -104,6 +108,25 @@ public class RecoveryFrame extends JFrame {
 		checkExc.anchor = GridBagConstraints.WEST;
 		checkExc.insets = new Insets(8, 5, 5, 5);
 		filesPanel.add(excelCheckBox, checkExc);
+
+		GridBagConstraints initial = new GridBagConstraints();
+
+		initial.gridx = 0;
+		initial.gridy = 5;
+		initial.anchor = GridBagConstraints.WEST;
+		initial.insets = new Insets(8, 5, 5, 5);
+
+		filesPanel.add(new JLabel("Valor inicial:"), initial);
+
+		initial = new GridBagConstraints();
+		initial.gridx = 1;
+		initial.gridy = 5;
+		initial.gridwidth = 2;
+		initial.weightx = 1.0;
+		initial.fill = GridBagConstraints.HORIZONTAL;
+		initial.insets = new Insets(8, 5, 5, 5);
+
+		filesPanel.add(initialValueField, initial);
 
 		JPanel progressPanel = new JPanel(new BorderLayout(8, 8));
 		progressPanel.setBorder(BorderFactory.createTitledBorder("Progreso"));
@@ -305,7 +328,7 @@ public class RecoveryFrame extends JFrame {
 			public void onFinished(RecoveryResult result) {
 				SwingUtilities.invokeLater(() -> finishRecovery(result));
 			}
-		});
+		},initialValueField );
 	}
 
 	private Path pathFromField(JTextField field) {
